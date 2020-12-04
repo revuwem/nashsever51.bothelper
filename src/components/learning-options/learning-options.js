@@ -4,7 +4,11 @@ import './learning-options.css';
 
 const LearningOptions = (props) => {
     const options = [
-        {text: 'JavaScript', handler: () => {}, id: 1},
+        {
+            text: 'JavaScript', 
+            handler: props.actionProvider.handleJavaScriptList, 
+            id: 1
+        },
         {text: 'Data Visualization', handler: ()=>{}, id: 2},
         {text: 'APIs', handler: ()=>{}, id: 3},
         {text: 'Security', handler: ()=>{}, id: 4},

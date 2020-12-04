@@ -22,6 +22,17 @@ class ActionProvider {
         const meetingMessage = this.createChatBotMessage('Nice to meet you too');
         this.updateChatbotState(meetingMessage);
     }
+
+    handleJavaScriptList = () => {
+        const message = this.createChatBotMessage(
+            "Fantastic, I've got the following resources for you on JavaScript",
+            {
+                widget: 'javascriptLinks',
+            }
+        );
+
+        this.updateChatbotState(message);
+    }
 };
 
 export default ActionProvider;
