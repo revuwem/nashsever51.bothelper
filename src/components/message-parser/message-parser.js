@@ -14,6 +14,10 @@ class MessageParser {
         if(lowercasedMessage.includes('meet')) {
             this.actionProvider.meet();
         }
+
+        if(lowercasedMessage.includes('javascript')) {
+            this.actionProvider.handleJavaScriptLinks();
+        }
     }
 };
 

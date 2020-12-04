@@ -23,7 +23,7 @@ class ActionProvider {
         this.updateChatbotState(meetingMessage);
     }
 
-    handleJavaScriptList = () => {
+    handleJavaScriptLinks = () => {
         const message = this.createChatBotMessage(
             "Fantastic, I've got the following resources for you on JavaScript",
             {
