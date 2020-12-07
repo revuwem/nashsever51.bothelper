@@ -1,8 +1,10 @@
 import React from 'react';
 import { createChatBotMessage } from 'react-chatbot-kit';
 
-import LearningOptions from '../learning-options';
 import LinkList from '../link-list';
+import HelpOptions from '../help-options';
+import StartUsageList from '../start-usage-list';
+import StartUsageConversationResponse from '../start-usage-conversation-response';
 
 const config = {    
     customStyles: {
@@ -13,11 +15,7 @@ const config = {
             backgroundColor: "#376B7E",
         },
     },
-    widgets: [
-        {
-            widgetName: "learningOptions",
-            widgetFunc: (props) => <LearningOptions {...props} />,
-        },
+    widgets: [        
         {
             widgetName: 'javascriptLinks',
             widgetFunc: (props) => <LinkList {...props} />,
@@ -42,9 +40,21 @@ const config = {
                 ],
             },
         },
+        {
+            widgetName: 'helpOptions',
+            widgetFunc: (props) => <HelpOptions {...props} />,
+        },
+        {
+            widgetName: 'startUsageConversationResponse',
+            widgetFunc: (props) => <StartUsageConversationResponse {...props} />,
+        },        
+        {
+            widgetName: 'startUsageList',
+            widgetFunc: (props) => <StartUsageList {...props} />,
+        }
     ],
     initialMessages: [
-        createChatBotMessage("Hey, I'm here to help! What do you want to learn?", {widget: 'learningOptions'})
+        createChatBotMessage("Выберите интересующий раздел, чтобы я смог вам помочь😊", {widget: 'helpOptions'})
     ],
 };
 

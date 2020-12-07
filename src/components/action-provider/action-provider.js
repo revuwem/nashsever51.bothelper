@@ -1,7 +1,7 @@
 import React from 'react';
 
 class ActionProvider {
-    constructor (createChatBotMessage, setStateFunc, createClientMessage) {
+    constructor(createChatBotMessage, setStateFunc, createClientMessage) {
         this.createChatBotMessage = createChatBotMessage;
         this.setState = setStateFunc;
         this.createClientMessage = createClientMessage;
@@ -14,25 +14,85 @@ class ActionProvider {
         // important that we make sure that we preserve the previous state.
 
         this.setState(prevState => ({
-            ...prevState, messages: [...prevState.messages, message]
+            ...prevState,
+            messages: [...prevState.messages, message]
         }));
-    }
-
-    meet = () => {
-        const meetingMessage = this.createChatBotMessage('Nice to meet you too');
-        this.updateChatbotState(meetingMessage);
-    }
+    }   
 
     handleJavaScriptLinks = () => {
         const message = this.createChatBotMessage(
-            "Fantastic, I've got the following resources for you on JavaScript",
-            {
+            "Fantastic, I've got the following resources for you on JavaScript", {
                 widget: 'javascriptLinks',
             }
         );
 
         this.updateChatbotState(message);
     }
+
+    handleHelpOptions = () => {
+        const message = this.createChatBotMessage(
+            'Выберите интересующий раздел, чтобы я смог вам помочь😊',
+            {
+                widget: 'helpOptions'
+            }
+        );
+
+        this.updateChatbotState(message);
+    }
+
+    // START USAGE SECTION
+
+    handleStartUsageQuestions = () => {
+        const message = this.createChatBotMessage(
+            `Вопросы по теме "Начало работы с порталом"`, {
+                widget: 'startUsageList',
+            }
+        );
+
+        this.updateChatbotState(message);
+    }
+
+    handleStartUsageFirstQuestion = () => {
+        const message = this.createChatBotMessage(
+            `Чтобы начать работу, зарегистрируйтесь на портале. Обязательно ознакомьтесь с «Регламентом приёма и обработки сообщений», который можно найти в пункте "О проекте" меню портала.`,
+            {
+                widget: 'startUsageConversationResponse',
+            }
+        );
+
+        this.updateChatbotState(message);
+    }   
+
+    // HANDLE PROFILE QUESTIONS
+
+    handleProfileQuestions = () => {
+
+    }
+
+    handleComplaintsQuestions = () => {
+
+    }
+
+    handleVotingsQuestions = () => {
+
+    }
+
+    handleInitiativesQuestions = () => {
+
+    }
+
+    handleBeautificationQuestions = () => {
+
+    }
+
+    handleWorkmapQuestions = () => {
+
+    }
+
+    handleSupportQuestions = () => {
+
+    }
+
 };
 
 export default ActionProvider;
