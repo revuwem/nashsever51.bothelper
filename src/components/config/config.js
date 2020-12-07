@@ -65,7 +65,7 @@ const config = {
                     {
                         id: 8,
                         text: 'Техническая поддержка', 
-                        handler: ()=>{}, 
+                        handler: 'handleSupportQuestionList', 
                     },   
                     
                 ],
@@ -411,6 +411,49 @@ const config = {
                 options: [                    
                     {
                         id: 1,
+                        text: 'Все разделы',
+                        handler: 'handleDefaultOptions',                        
+                    },
+                ],
+            },
+        },
+        // supportQuestionList
+        {
+            widgetName: 'supportQuestionList',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'Как связаться со специалистом ТП?',
+                        handler: 'handleSupportQuestion',
+                    },   
+                    {
+                        id: 2,
+                        text: 'Как оставить обратную связь о Портале?',
+                        handler: 'handleSupportQuestion',
+                    },                                  
+                    {
+                        id: 3,
+                        text: 'Вернуться к разделам',
+                        handler: 'handleDefaultOptions',
+                    },  
+                ],
+            },
+        },
+        // supportConversationReturn
+        {
+            widgetName: 'supportConversationReturn',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [ 
+                    {
+                        id: 1,
+                        text: 'У меня остались вопросы по этому разделу',
+                        handler: 'handleSupportQuestionList',                        
+                    },                   
+                    {
+                        id: 2,
                         text: 'Все разделы',
                         handler: 'handleDefaultOptions',                        
                     },

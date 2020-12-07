@@ -207,14 +207,29 @@ class ActionProvider {
 
         this.handleQuestion(responseText, widgetName);
     }
+
+    // HANDLE SUPPORT QUESTIONS
+
+    handleSupportQuestionList = () => {
+        const responseText = 'Вопросы по теме "Техническая поддержка"';
+        const widgetName = 'supportQuestionList';
+
+        this.handleQuestion(responseText, widgetName);
+    }
+
+    handleSupportQuestion = (id) => {
+        const responses = {
+            1: 'Если вы не нашли ответа на свой вопрос Вы можете связаться со специалистом технической поддержки по электронной почте info@nashsever51.ru.',
+            2: `Вы можете оставить свой отзыв и предложения по работе Портала через форму обратной связи.
+                Чтобы открыть форму перейдите по ссылке «Сообщить о проблеме на сайте» в правом нижнем углу подвала Портала.`,
+        };
+
+        const responseText = responses[id];
+        const widgetName = 'supportConversationReturn';
+
+        this.handleQuestion(responseText, widgetName);
+    }
     
 };
 
 export default ActionProvider;
-
-    // const responses = {
-    //     1: '',
-    //     2: '',
-    //     3: '',
-    //     4: '',
-    // };
