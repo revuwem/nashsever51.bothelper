@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './user-option.css';
-
 const UserOption = (props) => { 
 
     const optionsMarkup = props.options.map((option)=>(
