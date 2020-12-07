@@ -40,9 +40,9 @@ class ActionProvider {
 
     // START USAGE SECTION
 
-    handleStartUsageQuestionsList = () => { 
+    handleStartUsageQuestionList = () => { 
         const responseText = 'Вопросы по теме "Начало работы с порталом"';
-        const widgetName = 'startUsageQuestionsList';
+        const widgetName = 'startUsageQuestionList';
 
         this.handleQuestion(responseText, widgetName);
     }
@@ -70,9 +70,9 @@ class ActionProvider {
 
     // HANDLE PROFILE QUESTIONS
 
-    handleProfileQuestionsList = () => {
+    handleProfileQuestionList = () => {
         const responseText = 'Вопросы по теме "Личный кабинет"';
-        const widgetName = 'profileQuestionsList';
+        const widgetName = 'profileQuestionList';
 
         this.handleQuestion(responseText, widgetName);
     }

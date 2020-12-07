@@ -30,12 +30,12 @@ const config = {
                     {
                         id: 1,
                         text: 'Начало работы', 
-                        handler: 'handleStartUsageQuestionsList',                         
+                        handler: 'handleStartUsageQuestionList',                         
                     },
                     {
                         id: 2,
                         text: 'Личный кабинет', 
-                        handler: 'handleProfileQuestionsList',                         
+                        handler: 'handleProfileQuestionList',                         
                     },
                     {
                         id: 3,
@@ -71,9 +71,9 @@ const config = {
                 ],
             }
         },         
-        // startUsageQuestionsList  
+        // startUsageQuestionList  
         {
-            widgetName: 'startUsageQuestionsList',
+            widgetName: 'startUsageQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
                 options: [
@@ -114,7 +114,7 @@ const config = {
                     {
                         id: 1,
                         text: 'У меня остались вопросы по этому разделу',
-                        handler: 'handleStartUsageQuestionsList',                        
+                        handler: 'handleStartUsageQuestionList',                        
                     },
                     {
                         id: 2,
@@ -124,9 +124,9 @@ const config = {
                 ],
             },
         },   
-        // profileQuestionsList
+        // profileQuestionList
         {
-            widgetName: 'profileQuestionsList',
+            widgetName: 'profileQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
                 options: [
@@ -167,7 +167,7 @@ const config = {
                     {
                         id: 1,
                         text: 'У меня остались вопросы по этому разделу',
-                        handler: 'handleProfileQuestionsList',                        
+                        handler: 'handleProfileQuestionList',                        
                     },
                     {
                         id: 2,
@@ -176,7 +176,7 @@ const config = {
                     },
                 ],
             }
-        }
+        },
     ],
     initialMessages: [
         createChatBotMessage("Выберите интересующий раздел, чтобы я смог вам помочь😊", {widget: 'defaultOptions'})
