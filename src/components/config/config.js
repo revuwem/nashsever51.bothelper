@@ -2,7 +2,7 @@ import React from 'react';
 import { createChatBotMessage } from 'react-chatbot-kit';
 
 
-import UserResponse from '../user-response';
+import UserOption from '../user-option';
 
 
 const botName = 'Борис';
@@ -24,7 +24,7 @@ const config = {
         // defaultOptions             
         {
             widgetName: 'defaultOptions',
-            widgetFunc: (props) => <UserResponse {...props} />,
+            widgetFunc: (props) => <UserOption {...props} />,
             props: {
                 options: [
                     {
@@ -74,7 +74,7 @@ const config = {
         // startUsageQuestionsList  
         {
             widgetName: 'startUsageQuestionsList',
-            widgetFunc: (props) => <UserResponse {...props} />,
+            widgetFunc: (props) => <UserOption {...props} />,
             props: {
                 options: [
                     {
@@ -108,7 +108,7 @@ const config = {
         // startUsageConversationReturn
         {
             widgetName: 'startUsageConversationReturn',
-            widgetFunc: (props) => <UserResponse {...props} />,
+            widgetFunc: (props) => <UserOption {...props} />,
             props: {
                 options: [
                     {
@@ -127,7 +127,7 @@ const config = {
         // profileQuestionsList
         {
             widgetName: 'profileQuestionsList',
-            widgetFunc: (props) => <UserResponse {...props} />,
+            widgetFunc: (props) => <UserOption {...props} />,
             props: {
                 options: [
                     {
@@ -161,7 +161,7 @@ const config = {
         // profileConversationReturn
         {
             widgetName: 'profileConversationReturn',
-            widgetFunc: (props) => <UserResponse {...props} />,
+            widgetFunc: (props) => <UserOption {...props} />,
             props: {
                 options: [
                     {

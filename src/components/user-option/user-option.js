@@ -1,12 +1,12 @@
 import React from 'react';
 
-import './user-response.css';
+import './user-option.css';
 
-const UserResponse = (props) => { 
+const UserOption = (props) => { 
 
     const optionsMarkup = props.options.map((option)=>(
         <button
-            className="button user-response-button"
+            className="button user-option-button"
             key={option.id}
             onClick={()=>props.actionProvider[option.handler](option.id)}>
             {option.text}
@@ -14,8 +14,8 @@ const UserResponse = (props) => {
     ));
 
     return (
-        <div className="user-response-container"> {optionsMarkup} </div>
+        <div className="user-option-container"> {optionsMarkup} </div>
     );
 };
 
-export default UserResponse;
+export default UserOption;
