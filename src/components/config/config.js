@@ -21,9 +21,9 @@ const config = {
         },
     },
     widgets: [  
-        // helpOptions             
+        // defaultOptions             
         {
-            widgetName: 'helpOptions',
+            widgetName: 'defaultOptions',
             widgetFunc: (props) => <UserResponse {...props} />,
             props: {
                 options: [
@@ -35,7 +35,7 @@ const config = {
                     {
                         id: 2,
                         text: 'Личный кабинет', 
-                        handler: ()=>{},                         
+                        handler: 'handleProfileQuestionsList',                         
                     },
                     {
                         id: 3,
@@ -100,12 +100,12 @@ const config = {
                     {
                         id: 5,
                         text: 'Вернуться к разделам',
-                        handler: 'handleStartUsageQuestion',
+                        handler: 'handleDefaultOptions',
                     },
                 ],
             }
         },
-        // startUsageConversationResponse
+        // startUsageConversationReturn
         {
             widgetName: 'startUsageConversationReturn',
             widgetFunc: (props) => <UserResponse {...props} />,
@@ -119,14 +119,67 @@ const config = {
                     {
                         id: 2,
                         text: 'Все разделы',
-                        handler: 'handleHelpOptions',                        
+                        handler: 'handleDefaultOptions',                        
+                    },
+                ],
+            },
+        },   
+        // profileQuestionsList
+        {
+            widgetName: 'profileQuestionsList',
+            widgetFunc: (props) => <UserResponse {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'Как войти в учётную запись?',
+                        handler: 'handleProfileQuestion',
+                    },
+                    {
+                        id: 2,
+                        text: 'Как зайти в Личный кабинет?',
+                        handler: 'handleProfileQuestion',
+                    },
+                    {
+                        id: 3,
+                        text: 'Не пришло письмо для подтверждения email.',
+                        handler: 'handleProfileQuestion',
+                    },
+                    {
+                        id: 4,
+                        text: 'Что делать если я забыл пароль от учётной записи?',
+                        handler: 'handleProfileQuestion',
+                    },
+                    {
+                        id: 5,
+                        text: 'Вернуться к разделам',
+                        handler: 'handleDefaultOptions',
                     },
                 ],
             }
-        },     
+        },         
+        // profileConversationReturn
+        {
+            widgetName: 'profileConversationReturn',
+            widgetFunc: (props) => <UserResponse {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'У меня остались вопросы по этому разделу',
+                        handler: 'handleProfileQuestionsList',                        
+                    },
+                    {
+                        id: 2,
+                        text: 'Все разделы',
+                        handler: 'handleDefaultOptions',                        
+                    },
+                ],
+            }
+        }
     ],
     initialMessages: [
-        createChatBotMessage("Выберите интересующий раздел, чтобы я смог вам помочь😊", {widget: 'helpOptions'})
+        createChatBotMessage("Выберите интересующий раздел, чтобы я смог вам помочь😊", {widget: 'defaultOptions'})
     ],
 };
 
