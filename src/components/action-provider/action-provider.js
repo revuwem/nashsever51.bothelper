@@ -17,17 +17,7 @@ class ActionProvider {
             ...prevState,
             messages: [...prevState.messages, message]
         }));
-    }   
-
-    handleJavaScriptLinks = () => {
-        const message = this.createChatBotMessage(
-            "Fantastic, I've got the following resources for you on JavaScript", {
-                widget: 'javascriptLinks',
-            }
-        );
-
-        this.updateChatbotState(message);
-    }
+    }      
 
     handleHelpOptions = () => {
         const message = this.createChatBotMessage(

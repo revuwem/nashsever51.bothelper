@@ -9,15 +9,7 @@ class MessageParser {
     parse = (message) => {
         console.log(message);
 
-        const lowercasedMessage = message.toLowerCase();
-
-        if(lowercasedMessage.includes('meet')) {
-            this.actionProvider.meet();
-        }
-
-        if(lowercasedMessage.includes('javascript')) {
-            this.actionProvider.handleJavaScriptLinks();
-        }
+        const lowercasedMessage = message.toLowerCase();        
     }
 };
 
