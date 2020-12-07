@@ -6,15 +6,15 @@ const UserResponse = (props) => {
 
     const optionsMarkup = props.options.map((option)=>(
         <button
-            className="button"
+            className="button user-response-button"
             key={option.id}
-            onClick={props.actionProvider[option.handler]}>
+            onClick={()=>props.actionProvider[option.handler](option.id)}>
             {option.text}
         </button>
     ));
 
     return (
-        <div className="conversation-response-container"> {optionsMarkup} </div>
+        <div className="user-response-container"> {optionsMarkup} </div>
     );
 };
 

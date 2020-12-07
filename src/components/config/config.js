@@ -30,7 +30,7 @@ const config = {
                     {
                         id: 1,
                         text: 'Начало работы', 
-                        handler: 'handleStartUsageQuestions',                         
+                        handler: 'handleStartUsageQuestionsList',                         
                     },
                     {
                         id: 2,
@@ -71,50 +71,50 @@ const config = {
                 ],
             }
         },         
-        // startUsageList  
+        // startUsageQuestionsList  
         {
-            widgetName: 'startUsageList',
+            widgetName: 'startUsageQuestionsList',
             widgetFunc: (props) => <UserResponse {...props} />,
             props: {
                 options: [
                     {
                         id: 1,
                         text: 'С чего начать работу с порталом?',
-                        handler: 'handleStartUsageFirstQuestion',
+                        handler: 'handleStartUsageQuestion',
                     },
                     {
                         id: 2,
                         text: 'Зачем нужна регистрация?',
-                        handler: 'handleStartUsageSecondQuestion',
+                        handler: 'handleStartUsageQuestion',
                     },
                     {
                         id: 3,
                         text: 'Как зарегистрироваться на портале?',
-                        handler: 'handleStartUsageThirdQuestion',
+                        handler: 'handleStartUsageQuestion',
                     },
                     {
                         id: 4,
                         text: 'Кнопка регистрации недоступна.',
-                        handler: 'handleStartUsageFourthQuestion',
+                        handler: 'handleStartUsageQuestion',
                     },
                     {
                         id: 5,
                         text: 'Вернуться к разделам',
-                        handler: 'handleHelpOptions',
+                        handler: 'handleStartUsageQuestion',
                     },
                 ],
             }
         },
         // startUsageConversationResponse
         {
-            widgetName: 'startUsageConversationResponse',
+            widgetName: 'startUsageConversationReturn',
             widgetFunc: (props) => <UserResponse {...props} />,
             props: {
                 options: [
                     {
                         id: 1,
                         text: 'У меня остались вопросы по этому разделу',
-                        handler: 'handleStartUsageQuestions',                        
+                        handler: 'handleStartUsageQuestionsList',                        
                     },
                     {
                         id: 2,
