@@ -40,7 +40,7 @@ const config = {
                     {
                         id: 3,
                         text: 'Сообщения', 
-                        handler: ()=>{}, 
+                        handler: 'handleComplaintsQuestionList', 
                     },
                     { 
                         id: 4,
@@ -168,6 +168,69 @@ const config = {
                         id: 1,
                         text: 'У меня остались вопросы по этому разделу',
                         handler: 'handleProfileQuestionList',                        
+                    },
+                    {
+                        id: 2,
+                        text: 'Все разделы',
+                        handler: 'handleDefaultOptions',                        
+                    },
+                ],
+            }
+        },
+        // complaintsQuestionList
+        {
+            widgetName: 'complaintsQuestionList',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'Зачем сообщать о проблемах?',
+                        handler: 'handleComplaintsQuestion',
+                    },
+                    {
+                        id: 2,
+                        text: 'Как сообщить о проблеме?',
+                        handler: 'handleComplaintsQuestion',
+                    },
+                    {
+                        id: 3,
+                        text: 'Какие сроки рассмотрения обращения?',
+                        handler: 'handleComplaintsQuestion',
+                    },
+                    {
+                        id: 4,
+                        text: 'Как отследить ход рассмотрения обращения?',
+                        handler: 'handleComplaintsQuestion',
+                    },
+                    {
+                        id: 5,
+                        text: 'Почему мне отказали в рассмотрении обращения?',
+                        handler: 'handleComplaintsQuestion',
+                    },
+                    {
+                        id: 6,
+                        text: 'Как оценить качество решения проблемы?',
+                        handler: 'handleComplaintsQuestion',
+                    }, 
+                    {
+                        id: 7,
+                        text: 'Вернуться к разделам',
+                        handler: 'handleDefaultOptions',
+                    },                   
+                ]
+            }
+        },
+        // complaintsConversationReturn
+        {
+            widgetName: 'complaintsConversationReturn',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'У меня остались вопросы по этому разделу',
+                        handler: 'handleComplaintsQuestionList',                        
                     },
                     {
                         id: 2,
