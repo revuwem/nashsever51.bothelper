@@ -55,7 +55,7 @@ const config = {
                     { 
                         id: 6,
                         text: 'Благоустройство', 
-                        handler: ()=>{},
+                        handler: 'handleBeautificationQuestionList',
                     },
                     {
                         id: 7,
@@ -332,6 +332,49 @@ const config = {
                         id: 1,
                         text: 'У меня остались вопросы по этому разделу',
                         handler: 'handleInitiativesQuestionList',                        
+                    },
+                    {
+                        id: 2,
+                        text: 'Все разделы',
+                        handler: 'handleDefaultOptions',                        
+                    },
+                ],
+            },
+        },
+        //beautificationQuestionList
+        {
+            widgetName: 'beautificationQuestionList',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'Что я могу узнать в разделе Благоустройство?',
+                        handler: 'handleBeautificationQuestion',
+                    },
+                    {
+                        id: 2,
+                        text: 'Как я могу оставить своё мнение о проекте?',
+                        handler: 'handleBeautificationQuestion',
+                    },                    
+                    {
+                        id: 3,
+                        text: 'Вернуться к разделам',
+                        handler: 'handleDefaultOptions',
+                    },  
+                ],
+            },
+        },
+        // beautificationConversationReturn
+        {
+            widgetName: 'beautificationConversationReturn',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'У меня остались вопросы по этому разделу',
+                        handler: 'handleBeautificationQuestionList',                        
                     },
                     {
                         id: 2,

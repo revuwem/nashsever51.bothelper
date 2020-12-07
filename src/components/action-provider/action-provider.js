@@ -164,6 +164,27 @@ class ActionProvider {
 
         this.handleQuestion(responseText, widgetName);
     }
+
+    // HANDLE BEAUTIFICATION QUESTIONS
+
+    handleBeautificationQuestionList = () => {
+        const responseText = 'Вопросы по теме "Благоуйстройство"';
+        const widgetName = 'beautificationQuestionList';
+
+        this.handleQuestion(responseText, widgetName);
+    }
+
+    handleBeautificationQuestion = (id) => {
+        const responses = {
+            1: 'В этом разделе вы можете посмотреть проекты по благоустройству и, если вы зарегистрированы, одобрить понравившиеся. В карточке проекта по благоустройству вы можете ознакомится с основной информацией, скачать презентацию.',
+            2: 'В карточке проекта зарегистрированный пользователь может его одобрить, нажав на кнопку «палец вверх», а также оставить свой комментарий.',
+        };
+
+        const responseText = responses[id];
+        const widgetName = 'beautificationConversationReturn';
+
+        this.handleQuestion(responseText, widgetName);
+    }
     
 };
 
