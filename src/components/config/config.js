@@ -50,7 +50,7 @@ const config = {
                     { 
                         id: 5,
                         text: 'Инициативы', 
-                        handler: ()=>{},
+                        handler: 'handleInitiativesQuestionList',
                     },
                     { 
                         id: 6,
@@ -287,7 +287,60 @@ const config = {
                     },
                 ],
             },
-        }
+        },
+        // initiativesQuestionList
+        {
+            widgetName: 'initiativesQuestionList',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'Что такое Инициативы?',
+                        handler: 'handleInitiativesQuestion',
+                    },
+                    {
+                        id: 2,
+                        text: 'Как предложить инициативу?',
+                        handler: 'handleInitiativesQuestion',
+                    },
+                    {
+                        id: 3,
+                        text: 'Что происходит после отправки инициативы?',
+                        handler: 'handleInitiativesQuestion',
+                    },
+                    {
+                        id: 4,
+                        text: 'Как поддержать инициативу?',
+                        handler: 'handleInitiativesQuestion',
+                    },
+                    {
+                        id: 5,
+                        text: 'Вернуться к разделам',
+                        handler: 'handleDefaultOptions',
+                    },  
+                ],
+            },
+        },
+        // initiativesConversationReturn
+        {
+            widgetName: 'initiativesConversationReturn',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'У меня остались вопросы по этому разделу',
+                        handler: 'handleInitiativesQuestionList',                        
+                    },
+                    {
+                        id: 2,
+                        text: 'Все разделы',
+                        handler: 'handleDefaultOptions',                        
+                    },
+                ],
+            },
+        },
     ],
     initialMessages: [
         createChatBotMessage("Выберите интересующий раздел, чтобы я смог вам помочь😊", {widget: 'defaultOptions'})

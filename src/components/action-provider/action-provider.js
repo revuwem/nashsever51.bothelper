@@ -61,13 +61,6 @@ class ActionProvider {
         this.handleQuestion(responseText, widgetName);
     }
     
-    // const responses = {
-    //     1: '',
-    //     2: '',
-    //     3: '',
-    //     4: '',
-    // };
-
     // HANDLE PROFILE QUESTIONS
 
     handleProfileQuestionList = () => {
@@ -144,11 +137,41 @@ class ActionProvider {
         const widgetName = 'votingsConversationReturn';
 
         this.handleQuestion(responseText, widgetName);
-
-
     }
 
+    // HANDLE INITIATIVES QUESTIONS
+    
+    handleInitiativesQuestionList = () => {
+        const responseText = 'Вопросы по теме "Инициативы"';
+        const widgetName = 'initiativesQuestionList';
+
+        this.handleQuestion(responseText, widgetName);
+    }
+
+    handleInitiativesQuestion = (id) => {
+        const responses = {
+            1: 'В разделе «Инициативы» Портала создаются и публикуются обращения граждан с частными инициативами, затрагивающими интересы жителей муниципального образования в рамках инициативного бюджетирования.',
+            2: `Для подачи инициативы необходимо перейти по кнопке «Добавить инициативу» в верхнем правом углу экрана раздела «Инициативы». Далее следует выбрать категорию и подкатегорию инициативы, нажать кнопку «Продолжить». Затем заполните информацию о вашем предложении.
+                Проверьте правильность заполнения формы и нажмите копку «Отправить инициативу».`,
+            3: 'Созданная инициатива отправится на модерацию оператору Портала «Наш Север». При изменении статуса инициативы вам придёт уведомление в пункт «Инициативы» Личного кабинет и на электронную почту. После проверки инициатива будет опубликована.',
+            4: `Возможность поддержать инициативу предоставляется авторизованным пользователям Портала. 
+                Чтобы это сделать, в разделе «Инициативы» следует выбрать интересующую инициативу и открыть карточку проекта. Затем следует нажать кнопку «Поддержать инициативу». 
+                При желании можно оставить комментарий или перейти к другим инициативным проектам на Портале в списке «Другие инициативы».`,
+        };
+
+        const responseText = responses[id];
+        const widgetName = 'initiativesConversationReturn';
+
+        this.handleQuestion(responseText, widgetName);
+    }
     
 };
 
 export default ActionProvider;
+
+    // const responses = {
+    //     1: '',
+    //     2: '',
+    //     3: '',
+    //     4: '',
+    // };
