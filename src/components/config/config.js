@@ -59,8 +59,8 @@ const config = {
                     },
                     {
                         id: 7,
-                        text: 'Карты', 
-                        handler: ()=>{}, 
+                        text: 'Карта работ', 
+                        handler: 'handleWorkMapQuestionList', 
                     },
                     {
                         id: 8,
@@ -341,7 +341,7 @@ const config = {
                 ],
             },
         },
-        //beautificationQuestionList
+        // beautificationQuestionList
         {
             widgetName: 'beautificationQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
@@ -378,6 +378,39 @@ const config = {
                     },
                     {
                         id: 2,
+                        text: 'Все разделы',
+                        handler: 'handleDefaultOptions',                        
+                    },
+                ],
+            },
+        },
+        // workMapQuestionList
+        {
+            widgetName: 'workMapQuestionList',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'Что я могу узнать в разделе Карта работ?',
+                        handler: 'handleWorkMapQuestion',
+                    },                                     
+                    {
+                        id: 2,
+                        text: 'Вернуться к разделам',
+                        handler: 'handleDefaultOptions',
+                    },  
+                ],
+            },
+        },
+        // workMapConversationReturn
+        {
+            widgetName: 'workMapConversationReturn',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [                    
+                    {
+                        id: 1,
                         text: 'Все разделы',
                         handler: 'handleDefaultOptions',                        
                     },

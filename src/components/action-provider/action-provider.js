@@ -185,6 +185,28 @@ class ActionProvider {
 
         this.handleQuestion(responseText, widgetName);
     }
+
+    // HANDLE WORKMAP QUESTIONS
+
+    handleWorkMapQuestionList = () => {
+        const responseText = 'Вопросы по теме "Карта работ"';
+        const widgetName = 'workMapQuestionList';
+
+        this.handleQuestion(responseText, widgetName);
+    }
+
+    handleWorkMapQuestion = (id) => {
+        const responses = {
+            1: `В разделе «Карта работ» отображается информация о работах коммунальных, городских и дорожных служб. 
+                Слева на карте находится список с карточками работ, из которых можно узнать точный адрес проведения, сроки выполнения и описание работ. 
+                Над картой находится панель управления, в которой можно выбрать работы по статусу выполнения, типу и городу проведения.`,
+        };
+
+        const responseText = responses[id];
+        const widgetName = 'workMapConversationReturn';
+
+        this.handleQuestion(responseText, widgetName);
+    }
     
 };
 
