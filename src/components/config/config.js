@@ -45,7 +45,7 @@ const config = {
                     { 
                         id: 4,
                         text: 'Голосования', 
-                        handler: ()=>{},
+                        handler: 'handleVotingsQuestionList',
                     },
                     { 
                         id: 5,
@@ -238,8 +238,56 @@ const config = {
                         handler: 'handleDefaultOptions',                        
                     },
                 ],
-            }
+            },
         },
+        // votingsQuestionList
+        {
+            widgetName: 'votingsQuestionList',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'Что такое Голосования?',
+                        handler: 'handleVotingsQuestion',
+                    },
+                    {
+                        id: 2,
+                        text: 'Как оставить свой голос?',
+                        handler: 'handleVotingsQuestion',
+                    },
+                    {
+                        id: 3,
+                        text: 'Где можно увидеть проекты, за которые я проголосовал?',
+                        handler: 'handleVotingsQuestion',
+                    },
+                    {
+                        id: 4,
+                        text: 'Вернуться к разделам',
+                        handler: 'handleDefaultOptions',
+                    },  
+                ],
+            },
+        },
+        // votingsConversationReturn
+        {
+            widgetName: 'votingsConversationReturn',
+            widgetFunc: (props) => <UserOption {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'У меня остались вопросы по этому разделу',
+                        handler: 'handleVotingsQuestionList',                        
+                    },
+                    {
+                        id: 2,
+                        text: 'Все разделы',
+                        handler: 'handleDefaultOptions',                        
+                    },
+                ],
+            },
+        }
     ],
     initialMessages: [
         createChatBotMessage("Выберите интересующий раздел, чтобы я смог вам помочь😊", {widget: 'defaultOptions'})
