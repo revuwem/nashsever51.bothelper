@@ -30,28 +30,32 @@ class ActionProvider {
         this.updateChatbotState(message);
     }
 
-    // START USAGE SECTION
-
-    handleStartUsageQuestions = () => {
-        const message = this.createChatBotMessage(
-            `Вопросы по теме "Начало работы с порталом"`, {
-                widget: 'startUsageList',
-            }
-        );
+    handleQuestion = (responseText, widgetName) => {
+        const message = this.createChatBotMessage( responseText, {widget: widgetName});
 
         this.updateChatbotState(message);
     }
 
-    handleStartUsageFirstQuestion = () => {
-        const message = this.createChatBotMessage(
-            `Чтобы начать работу, зарегистрируйтесь на портале. Обязательно ознакомьтесь с «Регламентом приёма и обработки сообщений», который можно найти в пункте "О проекте" меню портала.`,
-            {
-                widget: 'startUsageConversationResponse',
-            }
-        );
+    
 
-        this.updateChatbotState(message);
+    // START USAGE SECTION
+
+    handleStartUsageQuestions = () => { 
+        const responseText = 'Вопросы по теме "Начало работы с порталом"';
+        const widgetName = 'startUsageList';
+
+        this.handleQuestion(responseText, widgetName);
+    }
+
+    handleStartUsageFirstQuestion = () => {  
+        const responseText = 'Чтобы начать работу, зарегистрируйтесь на портале. Обязательно ознакомьтесь с «Регламентом приёма и обработки сообщений», который можно найти в пункте "О проекте" меню портала.';
+        const widgetName = 'startUsageConversationResponse';
+
+        this.handleQuestion(responseText, widgetName);
+
     }   
+
+    
 
     // HANDLE PROFILE QUESTIONS
 

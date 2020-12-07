@@ -1,9 +1,8 @@
 import React from 'react';
 import { createChatBotMessage } from 'react-chatbot-kit';
 
-import HelpOptions from '../help-options';
-import StartUsageList from '../start-usage-list';
-import StartUsageConversationResponse from '../start-usage-conversation-response';
+
+import UserResponse from '../user-response';
 
 
 const botName = 'Борис';
@@ -21,19 +20,110 @@ const config = {
             backgroundColor: "#376B7E",
         },
     },
-    widgets: [               
+    widgets: [  
+        // helpOptions             
         {
             widgetName: 'helpOptions',
-            widgetFunc: (props) => <HelpOptions {...props} />,
-        },
-        {
-            widgetName: 'startUsageConversationResponse',
-            widgetFunc: (props) => <StartUsageConversationResponse {...props} />,
-        },        
+            widgetFunc: (props) => <UserResponse {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'Начало работы', 
+                        handler: 'handleStartUsageQuestions',                         
+                    },
+                    {
+                        id: 2,
+                        text: 'Личный кабинет', 
+                        handler: ()=>{},                         
+                    },
+                    {
+                        id: 3,
+                        text: 'Сообщения', 
+                        handler: ()=>{}, 
+                    },
+                    { 
+                        id: 4,
+                        text: 'Голосования', 
+                        handler: ()=>{},
+                    },
+                    { 
+                        id: 5,
+                        text: 'Инициативы', 
+                        handler: ()=>{},
+                    },
+                    { 
+                        id: 6,
+                        text: 'Благоустройство', 
+                        handler: ()=>{},
+                    },
+                    {
+                        id: 7,
+                        text: 'Карты', 
+                        handler: ()=>{}, 
+                    },
+                    {
+                        id: 8,
+                        text: 'Техническая поддержка', 
+                        handler: ()=>{}, 
+                    },   
+                    
+                ],
+            }
+        },         
+        // startUsageList  
         {
             widgetName: 'startUsageList',
-            widgetFunc: (props) => <StartUsageList {...props} />,
-        }
+            widgetFunc: (props) => <UserResponse {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'С чего начать работу с порталом?',
+                        handler: 'handleStartUsageFirstQuestion',
+                    },
+                    {
+                        id: 2,
+                        text: 'Зачем нужна регистрация?',
+                        handler: 'handleStartUsageSecondQuestion',
+                    },
+                    {
+                        id: 3,
+                        text: 'Как зарегистрироваться на портале?',
+                        handler: 'handleStartUsageThirdQuestion',
+                    },
+                    {
+                        id: 4,
+                        text: 'Кнопка регистрации недоступна.',
+                        handler: 'handleStartUsageFourthQuestion',
+                    },
+                    {
+                        id: 5,
+                        text: 'Вернуться к разделам',
+                        handler: 'handleHelpOptions',
+                    },
+                ],
+            }
+        },
+        // startUsageConversationResponse
+        {
+            widgetName: 'startUsageConversationResponse',
+            widgetFunc: (props) => <UserResponse {...props} />,
+            props: {
+                options: [
+                    {
+                        id: 1,
+                        text: 'У меня остались вопросы по этому разделу',
+                        handler: 'handleStartUsageQuestions',                        
+                    },
+                    {
+                        id: 2,
+                        text: 'Все разделы',
+                        handler: 'handleHelpOptions',                        
+                    },
+                ],
+            }
+        },     
     ],
     initialMessages: [
         createChatBotMessage("Выберите интересующий раздел, чтобы я смог вам помочь😊", {widget: 'helpOptions'})
