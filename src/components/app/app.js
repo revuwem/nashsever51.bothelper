@@ -9,14 +9,12 @@ import config from '../config';
 
 function App() {
   return (
-    <div className="app">
-      <header className="app-header">
-        <Chatbot 
-              config={config} 
-              actionProvider={ActionProvider} 
-              messageParser={MessageParser}
-        />
-      </header>
+    <div className="nashsever-helper-bot">      
+      <Chatbot 
+        config={config} 
+        actionProvider={ActionProvider} 
+        messageParser={MessageParser}
+      />
     </div>
   );
 }

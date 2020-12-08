@@ -4,7 +4,7 @@ const UserOption = (props) => {
 
     const optionsMarkup = props.options.map((option)=>(
         <button
-            className="button user-option-button"
+            className="nashsever-helper-bot__button nashsever-helper-bot__button--user-option"
             key={option.id}
             onClick={()=>props.actionProvider[option.handler](option.id)}>
             {option.text}
@@ -12,7 +12,7 @@ const UserOption = (props) => {
     ));
 
     return (
-        <div className="user-option-container"> {optionsMarkup} </div>
+        <div className="nashsever-helper-bot__user-options"> {optionsMarkup} </div>
     );
 };
 

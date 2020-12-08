@@ -1,11 +1,148 @@
-.button{
-    width: 100%;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
-    background-color: #fff;
-    border: 1px solid blueviolet;
-    border-radius: 20px;
-    outline: none;  
-    
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+$primary-color: #183f86; 
+$light-color: #fdfdfd;
+$dark-color: #222;
+
+
+@font-face {
+	font-family: 'GolosTextWebRegular';
+	src: url('../../assets/fonts/Golos_Text_Regular.eot');
+	src:
+	     url('../../assets/fonts/Golos_Text_Regular.eot?#iefix') format('embedded-opentype'),
+	     url('../../assets/fonts/Golos_Text_Regular.woff2') format('woff2'),
+	     url('../../assets/fonts/Golos_Text_Regular.woff') format('woff'),
+	     url('../../assets/fonts/Golos_Text_Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
 }
+
+.nashsever-helper-bot{      
+    max-width: 300px;
+    height: 500px;
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+
+    font-family: 'GolosTextWebRegular';
+    font-size: 70%;
+    line-height: 170%;
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+
+    .react-chatbot-kit-chat-container {
+        width: 100%; 
+    }
+
+    .react-chatbot-kit-chat-bot-message {
+        color: $dark-color;
+        background-color: #ececec;
+        font-size: 0.9rem;
+        line-height: 150%;
+    }
+
+    .react-chatbot-kit-chat-message-container {
+        height: 445px;        
+
+        /* Firefox scrollbar*/
+        scrollbar-width: thin;      /* "auto" or "thin" */
+        scrollbar-color: $primary-color $light-color;   /* scroll thumb and track */
+
+        /* Chrome, Edge, Safari scrollbar*/
+        &::-webkit-scrollbar {
+            width: 10px;            /* width of the entire scrollbar */
+        }
+
+        &::-webkit-scrollbar-track {
+            background: $light-color;           /* color of the tracking area */
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $primary-color;   /* color of the scroll thumb */
+            border-radius: 10px;                /* roundness of the scroll thumb */
+            border: 3px solid $light-color;     /* creates padding around scroll thumb */
+        }
+    }
+
+    .react-chatbot-kit-chat-bot-message-arrow {
+        border-right: 8px solid #ececec;
+    }
+
+    .react-chatbot-kit-chat-input-container {
+        display: none;
+    }
+
+    &__header {
+        height: 45px;
+        position: relative;
+
+        color: $light-color;
+        font-size: 1.2rem;
+        font-weight: 700;
+
+        background-color: $primary-color;
+        border-radius: 5px 5px 0 0;
+        
+
+        span {
+            padding: 0.25rem 0;
+            position: absolute;
+            top: 20%;
+            left: 17.5px;
+        }
+    }
+
+    &__avatar {        
+        width: 40px;
+        height: 40px;             
+        margin-right: 1rem;    
+        border-radius: 50%;       
+        transform: translateY(-1px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img{
+            max-width: 100%;
+            
+        }
+    }
+
+    &__user-options {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    &__button{
+        min-width: 70px;
+        padding: 0.5rem 0.75rem;
+        margin: 0.5rem 0.25rem;
+
+        color: $light-color;
+        font-family: inherit;
+        text-align: center;
+        letter-spacing: .08em;
+
+        background-color: $primary-color;
+        border: 1px solid $primary-color;
+        border-radius: 4px;
+
+        box-shadow: 0 0px 10px rgba($dark-color, 0.25);
+        outline: none;
+        cursor: pointer;
+        transition: all 0.1s ease-out;
+
+        &:hover {
+            background-color: darken($primary-color, 2%);
+            box-shadow: 0 -5px 10px rgba($dark-color, 0.15);
+            transform: translateX(-5px);
+        }
+
+        &:active {
+            background-color: darken($primary-color, 5%);
+            box-shadow: 0 5px 10px rgba($dark-color, 0.35);
+            transform: translateX(-5px) translateY(1px);
+        }
+    }   
+}
+

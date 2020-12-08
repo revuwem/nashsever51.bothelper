@@ -1,23 +1,23 @@
 import React from 'react';
 import { createChatBotMessage } from 'react-chatbot-kit';
 
-
+import BotHeader from '../bot-header';
+import BotAvatar from '../bot-avatar';
 import UserOption from '../user-option';
 
+import botAvatar from '../../assets/images/bot_icon/bot.svg';
 
 const botName = 'Борис';
+const botAvatarAlt = botName[0];
 
 const config = {    
-    botName: botName,
     customComponents: {
-        header: () => <div style={{ color: '#fff', backgroundColor: '#376B7E', padding: "10px", borderRadius: "3px" }}>{botName}</div>
+        header: () => <BotHeader botName={botName} />,
+        botAvatar: () => <BotAvatar src={botAvatar} alt={botAvatarAlt} />
     },
-    customStyles: {
-        botMessageBox: {
-            backgroundColor: "#376B7E",
-        },
+    customStyles: {        
         chatButton: {
-            backgroundColor: "#376B7E",
+            backgroundColor: "#183f86",
         },
     },
     widgets: [  
