@@ -13,7 +13,14 @@ function App() {
 
   const [displayBot, toggleBot] = useState(false);
 
-  
+  const saveMessages = (messages) => {
+    localStorage.setItem("nashsever_helper_messages", JSON.stringify(messages));
+  }; 
+
+  const loadMessages = () => {
+    const messages = JSON.parse(localStorage.getItem("nashsever_helper_messages"));
+    return messages;
+  };  
 
   return (
     <Fragment>
@@ -23,7 +30,9 @@ function App() {
             <Chatbot          
             config={config} 
             actionProvider={ActionProvider} 
+            messageHistory={loadMessages()}
             messageParser={MessageParser}
+            saveMessages={saveMessages}
           /> 
           )
         }
