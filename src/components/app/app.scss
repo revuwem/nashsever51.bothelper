@@ -19,136 +19,168 @@ html {
     font-size: 62.5%;   // 1rem = 10px
 }
 
-.nashsever-helper-bot{      
+.nashsever-helper{
     max-width: 30rem;
-    height: 50rem;
+    height: 53rem;   
+
     position: fixed;
-    right: 2rem;
-    bottom: 5rem;
+    right: 3rem;
+    bottom: 3rem;
 
     font-family: 'GolosTextWebRegular';    
-    line-height: 150%;
-    
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
-    display: none;
-    transition: all 0.3s ease-in;
+    line-height: 150%;    
 
-    &.active{
-        display: block;
-    }
+    &-toggler{
+        position: absolute;
+        bottom: 0;
+        right: 0;
 
-    .react-chatbot-kit-chat-container {
-        width: 100%; 
-    }
+        width: 6rem;
+        height: 6rem;        
 
-    .react-chatbot-kit-chat-bot-message {
-        color: $dark-color;
-        background-color: #ececec;
-        font-size: 1.4rem; 
-        line-height: 150%;    
-    }
-
-    .react-chatbot-kit-chat-message-container {
-        height: 44.5rem;   
-        overflow-x: hidden;   
-        overflow-y: scroll; 
-         
-
-        /* Firefox scrollbar*/
-        scrollbar-width: thin;      /* "auto" or "thin" */
-        scrollbar-color: $primary-color #dcdcdc;   /* scroll thumb and track */
-
-        /* Chrome, Edge, Safari scrollbar*/
-        &::-webkit-scrollbar {
-            width: 1rem;            /* width of the entire scrollbar */
-        }
-
-        &::-webkit-scrollbar-track {
-            background: $light-color;           /* color of the tracking area */
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: $primary-color;   /* color of the scroll thumb */
-            border-radius: 1rem;                /* roundness of the scroll thumb */
-            border: 0.3rem solid $light-color;     /* creates padding around scroll thumb */
-        }
-    }
-
-    .react-chatbot-kit-chat-bot-message-arrow {
-        border-right: 0.8rem solid #ececec;
-    }
-
-    .react-chatbot-kit-chat-input-container {
-        display: none;
-    }
-
-    &__header {        
-        padding: 1.5rem 2rem;       
+        background-color: $light-color;       
         
-        position: relative;
+        
 
-        color: $light-color;
-        font-size: 1.7rem;
-        font-weight: 700;
-
-        background-color: $primary-color;
-        border-radius: 0.5rem 0.5rem 0 0; 
-    }
-
-    &__avatar {        
-        width: 40px;
-        height: 40px;             
-        margin-right: 1rem;    
-        border-radius: 50%;       
-        transform: translateY(-1px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        img{
-            max-width: 100%;
-            
-        }
-    }
-
-    &__user-options {
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-start;
-        flex-wrap: wrap;
-    }
-
-    &__button{
-        min-width: 7rem;
-        padding: 0.5rem 0.75rem;
-        margin: 0.5rem 0.25rem;
-
-        color: $light-color;
-        font-family: inherit;
-        font-size: 1.3rem;
-        text-align: center;
-        letter-spacing: .08em;
-
-        background-color: $primary-color;
-        border: 1px solid $primary-color;
-        border-radius: 4px;
-
-        box-shadow: 0 0px 1rem rgba($dark-color, 0.25);
+        border: none;
+        border-radius: 50%;
         outline: none;
+
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);  
         cursor: pointer;
-        transition: all 0.1s ease-out;
+        
+        img {
+            max-width: 100%;
+        }
+    }
 
-        &:hover {
-            background-color: darken($primary-color, 2%);
-            box-shadow: 0 -0.5rem 1rem rgba($dark-color, 0.15);
-            transform: translateX(-5px);
+    &-bot{  
+        position: absolute;
+        bottom: 7rem;
+        right: 0;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15); 
+        opacity: 0;
+        transition: all 0.3s ease-out;
+        
+        &.active {
+            opacity: 1;
+            transform: translateY(-1rem);
+        }
+        
+
+        .react-chatbot-kit-chat-container {
+            width: 100%; 
         }
 
-        &:active {
-            background-color: darken($primary-color, 5%);
-            box-shadow: 0 0.5rem 1rem rgba($dark-color, 0.35);
-            transform: translateX(-5px) translateY(1px);
+        .react-chatbot-kit-chat-bot-message {
+            color: $dark-color;
+            background-color: #ececec;
+            font-size: 1.4rem; 
+            line-height: 150%;    
         }
+
+        .react-chatbot-kit-chat-message-container {
+            height: 44.5rem;   
+            overflow-x: hidden;   
+            overflow-y: scroll; 
+            
+
+            /* Firefox scrollbar*/
+            scrollbar-width: thin;      /* "auto" or "thin" */
+            scrollbar-color: $primary-color #dcdcdc;   /* scroll thumb and track */
+
+            /* Chrome, Edge, Safari scrollbar*/
+            &::-webkit-scrollbar {
+                width: 1rem;            /* width of the entire scrollbar */
+            }
+
+            &::-webkit-scrollbar-track {
+                background: $light-color;           /* color of the tracking area */
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $primary-color;   /* color of the scroll thumb */
+                border-radius: 1rem;                /* roundness of the scroll thumb */
+                border: 0.3rem solid $light-color;     /* creates padding around scroll thumb */
+            }
+        }
+
+        .react-chatbot-kit-chat-bot-message-arrow {
+            border-right: 0.8rem solid #ececec;
+        }
+
+        .react-chatbot-kit-chat-input-container {
+            display: none;
+        }
+
+        &__header {        
+            padding: 1.5rem 2rem;       
+            
+            position: relative;
+
+            color: $light-color;
+            font-size: 1.7rem;
+            font-weight: 700;
+
+            background-color: $primary-color;
+            border-radius: 0.5rem 0.5rem 0 0; 
+        }
+
+        &__avatar {        
+            width: 40px;
+            height: 40px;             
+            margin-right: 1rem;    
+            border-radius: 50%;       
+            transform: translateY(-1px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img{
+                max-width: 100%;
+                
+            }
+        }
+
+        &__user-options {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        &__button{
+            min-width: 7rem;
+            padding: 0.5rem 0.75rem;
+            margin: 0.5rem 0.25rem;
+
+            color: $light-color;
+            font-family: inherit;
+            font-size: 1.3rem;
+            text-align: center;
+            letter-spacing: .08em;
+
+            background-color: $primary-color;
+            border: 1px solid $primary-color;
+            border-radius: 4px;
+
+            box-shadow: 0 0px 1rem rgba($dark-color, 0.25);
+            outline: none;
+            cursor: pointer;
+            transition: all 0.1s ease-out;
+
+            &:hover {
+                background-color: darken($primary-color, 2%);
+                box-shadow: 0 -0.5rem 1rem rgba($dark-color, 0.15);
+                transform: translateX(-5px);
+            }
+
+            &:active {
+                background-color: darken($primary-color, 5%);
+                box-shadow: 0 0.5rem 1rem rgba($dark-color, 0.35);
+                transform: translateX(-5px) translateY(1px);
+            }
+        }   
     }   
 }
 
