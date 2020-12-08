@@ -27,11 +27,7 @@ html {
     box-sizing: border-box;
 }
 
-.nashsever-helper{
-    max-width: 30rem;
-    height: 53rem;   
-    max-height: 70vh;
-
+.nashsever-helper{  
     position: fixed;
     right: 3rem;
     bottom: 3rem;
@@ -45,8 +41,8 @@ html {
         bottom: 0;
         right: 0;
 
-        width: 6rem;
-        height: 6rem;        
+        width: 5rem;
+        height: 5rem;        
 
         background-color: $light-color;       
         
@@ -69,26 +65,62 @@ html {
         height: 100%;
         position: relative;
         bottom: 6rem;
-        right: 0;
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15); 
-        opacity: 0;
-        transition: all 0.3s ease-out;
+        right: 0;                 
 
         .react-chatbot-kit-chat-container {
-            width: 100%;
-            height: 100%; 
-            opacity: 0;
-            transition: all 0.1s;
-        }
+            width: 30rem;
+            height: 53rem;   
+            max-height: 70vh;
+            box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.3s ease-out;
+            transform: translateY(-2rem);
+        }   
         
-        &.active {
-            opacity: 1;
-            transform: translateY(-1rem);
+        .react-chatbot-kit-chat-inner-container {
+            height: 100%;            
+        }
 
-            .react-chatbot-kit-chat-container {
-                opacity: 1;                
+        .react-chatbot-kit-chat-message-container {
+            height: calc(100% - #{$header-height});               
+            overflow-x: hidden;   
+            overflow-y: scroll; 
+            
+
+            /* Firefox scrollbar*/
+            scrollbar-width: thin;      /* "auto" or "thin" */
+            scrollbar-color: $primary-color #dcdcdc;   /* scroll thumb and track */
+
+            /* Chrome, Edge, Safari scrollbar*/
+            &::-webkit-scrollbar {
+                width: 1rem;            /* width of the entire scrollbar */
             }
+
+            &::-webkit-scrollbar-track {
+                background: $light-color;           /* color of the tracking area */
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $primary-color;   /* color of the scroll thumb */
+                border-radius: 1rem;                /* roundness of the scroll thumb */
+                border: 0.3rem solid $light-color;     /* creates padding around scroll thumb */
+            }
+        }
+
+        .react-chatbot-kit-chat-bot-message {
+            color: $dark-color;
+            background-color: #ececec;
+            font-size: 1.4rem; 
+            line-height: 150%;  
+            margin-left: 0;  
         }        
+
+        .react-chatbot-kit-chat-bot-message-arrow {
+            border-right: 0.8rem solid #ececec;
+        }
+
+        .react-chatbot-kit-chat-input-container {
+            display: none;
+        }
 
         &__header {        
             padding: 1.5rem 2rem; 
@@ -103,8 +135,8 @@ html {
         }
 
         &__avatar {        
-            width: 40px;
-            height: 40px;             
+            width: 4rem;
+            height: 4rem;             
             margin-right: 1rem;    
             border-radius: 50%;       
             transform: translateY(-1px);
@@ -156,53 +188,24 @@ html {
                 box-shadow: 0 0.5rem 1rem rgba($dark-color, 0.35);
                 transform: translateX(-5px) translateY(1px);
             }
-        }  
-        
-        .react-chatbot-kit-chat-inner-container {
-            height: 100%;            
-        }
-
-        .react-chatbot-kit-chat-message-container {
-            height: calc(100% - #{$header-height});               
-            overflow-x: hidden;   
-            overflow-y: scroll; 
-            
-
-            /* Firefox scrollbar*/
-            scrollbar-width: thin;      /* "auto" or "thin" */
-            scrollbar-color: $primary-color #dcdcdc;   /* scroll thumb and track */
-
-            /* Chrome, Edge, Safari scrollbar*/
-            &::-webkit-scrollbar {
-                width: 1rem;            /* width of the entire scrollbar */
-            }
-
-            &::-webkit-scrollbar-track {
-                background: $light-color;           /* color of the tracking area */
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background-color: $primary-color;   /* color of the scroll thumb */
-                border-radius: 1rem;                /* roundness of the scroll thumb */
-                border: 0.3rem solid $light-color;     /* creates padding around scroll thumb */
-            }
-        }
-
-        .react-chatbot-kit-chat-bot-message {
-            color: $dark-color;
-            background-color: #ececec;
-            font-size: 1.4rem; 
-            line-height: 150%;  
-            margin-left: 0;  
-        }        
-
-        .react-chatbot-kit-chat-bot-message-arrow {
-            border-right: 0.8rem solid #ececec;
-        }
-
-        .react-chatbot-kit-chat-input-container {
-            display: none;
-        }
+        }          
     }   
 }
 
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;       
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 0.5;       
+        transform: translateY(-1rem);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(-2rem);
+    }
+}

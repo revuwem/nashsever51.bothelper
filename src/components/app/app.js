@@ -13,17 +13,20 @@ function App() {
 
   const [displayBot, toggleBot] = useState(false);
 
-  const botClassName = displayBot ? 'nashsever-helper-bot active' : 'nashsever-helper-bot';
+  
 
   return (
     <Fragment>
-      <div className={botClassName}>    
-
-        <Chatbot          
-          config={config} 
-          actionProvider={ActionProvider} 
-          messageParser={MessageParser}
-        />  
+      <div className="nashsever-helper-bot"> 
+       { 
+          displayBot && ( 
+            <Chatbot          
+            config={config} 
+            actionProvider={ActionProvider} 
+            messageParser={MessageParser}
+          /> 
+          )
+        }
       </div>
 
       <button className="nashsever-helper-toggler" onClick={()=>toggleBot(prev => !prev)}>
