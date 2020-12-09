@@ -1,4 +1,5 @@
 $primary-color: #183f86; 
+$secondary-color: #ef7177;
 $light-color: #fdfdfd;
 $dark-color: #222;
 
@@ -107,17 +108,56 @@ html {
             }
         }
 
-        .react-chatbot-kit-chat-bot-message {
+        .react-chatbot-kit-chat-bot-message-container,
+        .react-chatbot-kit-user-chat-message-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .react-chatbot-kit-chat-bot-message,
+        .react-chatbot-kit-user-chat-message {
+            width: auto;
+            max-width: 75%;
+            margin-left: 0;             
+
             color: $dark-color;
             background-color: #ececec;
             font-size: 1.4rem; 
-            line-height: 150%;  
-            margin-left: 0;  
-        }        
+            line-height: 150%;
+        }   
+        
+        .react-chatbot-kit-user-avatar-container {
+            width: 4rem;
+            height: 4rem;             
+            margin-left: 1rem; 
+            background-color: $secondary-color;
+
+            .react-chatbot-kit-user-avatar-icon {
+                width: 1em;
+            }
+        }
 
         .react-chatbot-kit-chat-bot-message-arrow {
+            width: 0;
+            height: 0;
+            border-top: 0.8rem solid transparent;
+            border-bottom: 0.8rem solid transparent;
             border-right: 0.8rem solid #ececec;
+            position: absolute;
+            left: -7px;
+            top: 0.7rem;            
         }
+
+        .react-chatbot-kit-user-chat-message-arrow {
+            width: 0;
+            height: 0;
+            border-top: 0.8rem solid transparent;
+            border-bottom: 0.8rem solid transparent;
+            border-left: 0.8rem solid #ececec;
+            position: absolute;
+            right: -7px;
+            top: 0.7rem;
+        }
+
 
         .react-chatbot-kit-chat-input-container {
             display: none;
@@ -135,15 +175,12 @@ html {
             border-radius: 0.5rem 0.5rem 0 0; 
         }
 
-        &__avatar {        
+        &__avatar {  
             width: 4rem;
             height: 4rem;             
             margin-right: 1rem;    
             border-radius: 50%;       
-            transform: translateY(-1px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transform: translateY(-1px);            
 
             img{
                 max-width: 100%;
