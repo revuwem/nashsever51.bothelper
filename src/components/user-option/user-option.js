@@ -6,7 +6,7 @@ const UserOption = (props) => {
         <button
             className="nashsever-helper-bot__button nashsever-helper-bot__button--user-option"
             key={option.id}
-            onClick={()=>props.actionProvider[option.handler](option.id)}>
+            onClick={()=>props.actionProvider[option.handler](option)}>
             {option.text}
         </button>
     ));
