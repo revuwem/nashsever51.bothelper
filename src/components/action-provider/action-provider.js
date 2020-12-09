@@ -5,18 +5,29 @@ class ActionProvider {
         this.createChatBotMessage = createChatBotMessage;
         this.setState = setStateFunc;
         this.createClientMessage = createClientMessage;
+        this.defaultBotResponses = {
+            selectQuestion: 'Какой вопрос вас интересует?',
+        }
     }
 
-    updateChatbotState = (message) => {
+    updateChatbotState = (botMessage, userMessage = null) => {
         // NOTE: This function is set in the constructor, and is passed in      
         // from the top level Chatbot component. The setState function here     
         // actually manipulates the top level state of the Chatbot, so it's     
         // important that we make sure that we preserve the previous state.
+        console.log(userMessage, typeof userMessage);
 
-        this.setState(prevState => ({
-            ...prevState,
-            messages: [...prevState.messages, message]
-        }));
+        if(userMessage) {
+            this.setState(prevState => ({
+                ...prevState,
+                messages: [...prevState.messages, userMessage, botMessage]
+            }));
+        } else {
+            this.setState(prevState => ({
+                ...prevState,
+                messages: [...prevState.messages, botMessage]
+            }));
+        }        
     }      
 
     handleDefaultOptions = () => {
@@ -30,10 +41,11 @@ class ActionProvider {
         this.updateChatbotState(message);
     }
 
-    handleQuestion = (responseText, widgetName) => {
-        const message = this.createChatBotMessage( responseText, {widget: widgetName});
+    handleQuestion = (botResponse, widgetName, userResponse = null) => {
+        const botMessage = this.createChatBotMessage(botResponse, {widget: widgetName});
+        const userMessage = userResponse ? this.createClientMessage(userResponse) : null;
 
-        this.updateChatbotState(message);
+        this.updateChatbotState(botMessage, userMessage);
     }
 
 
@@ -41,13 +53,13 @@ class ActionProvider {
     // START USAGE SECTION
 
     handleStartUsageQuestionList = () => { 
-        const responseText = 'Вопросы по теме "Начало работы с порталом"';
+        const botResponse = this.defaultBotResponses.selectQuestion;        
         const widgetName = 'startUsageQuestionList';
 
-        this.handleQuestion(responseText, widgetName);
+        this.handleQuestion(botResponse, widgetName);
     }
 
-    handleStartUsageQuestion = (id) => {
+    handleStartUsageQuestion = (option) => {
         const responses = {
             1: 'Чтобы начать работу, зарегистрируйтесь на портале. Обязательно ознакомьтесь с «Регламентом приёма и обработки сообщений», который можно найти в пункте "О проекте" меню портала.',
             2: 'Авторизованным пользователям доступны все возможности Портала, такие как отправка сообщений о проблемах, участие в голосованиях, предложение инициатив и одобрение проектов по благоустройству. Это отличная возможность повлиять на развитие своего города и региона.',
@@ -55,22 +67,25 @@ class ActionProvider {
             4: 'Проверьте, что вы заполнили все поля формы регистрации.',
         };
         
-        const responseText = responses[id];
+        const {id, text} = option;
+
+        const botResponse = responses[id];
+        const userResponse = text;
         const widgetName = 'startUsageConversationReturn';
 
-        this.handleQuestion(responseText, widgetName);
+        this.handleQuestion(botResponse, widgetName, userResponse);
     }
     
     // HANDLE PROFILE QUESTIONS
 
     handleProfileQuestionList = () => {
-        const responseText = 'Вопросы по теме "Личный кабинет"';
+        const botResponse = this.defaultBotResponses.selectQuestion;        
         const widgetName = 'profileQuestionList';
 
-        this.handleQuestion(responseText, widgetName);
+        this.handleQuestion(botResponse, widgetName);
     }
 
-    handleProfileQuestion = (id) => {
+    handleProfileQuestion = (option) => {
         const responses = {
             1: 'Чтобы войти в свою учётную запись, вам нужно найти белую кнопку "Войти" в правом верхнем углу Портала, затем нажать на неё, ввести свои учётные данные и нажать красную кнопку "Войти". Если вы не нашли белую кнопку "Войти", возможно вы уже вошли в свою учётную запись.',
             2: 'Чтобы зайти в Личный кабинет нужно нажать на значок учетной записи с вашим именем в правом верхнем углу экрана и в выпадающем списке выбрать интересующий раздел. Если вы не нашли такой значок, убедитесь, что вы вошли в свою учётную запись.',
@@ -78,22 +93,25 @@ class ActionProvider {
             4: `Откройте форму авторизации по кнопке «Войти» в правом верхнем углу экрана. Перейдите по ссылке «Забыли пароль?» на открывшейся форме авторизации. Произойдет переход на форму восстановления пароля «Сбросить пароль». В поле «Email» введите адрес электронной почты, на которую зарегистрирована ваша учётная запись. На вашу почту будет отправлено уведомление о сбросе пароля. В этом уведомлении перейдите по ссылке «Сбросить пароль». Вы будете направлены на форму сброса пароля, в которой следует указать новый пароль и подтвердить сброс.`,
         };
         
-        const responseText = responses[id];
+        const {id, text} = option;
+
+        const botResponse = responses[id];
+        const userResponse = text;
         const widgetName = 'profileConversationReturn';
 
-        this.handleQuestion(responseText, widgetName);
+        this.handleQuestion(botResponse, widgetName, userResponse);
     }    
 
     // HANDLE COMPLAINTS QUESTIONS
 
     handleComplaintsQuestionList = () => {
-        const responseText = 'Вопросы по теме "Сообщения"';
+        const botResponse = this.defaultBotResponses.selectQuestion;
         const widgetName = 'complaintsQuestionList';
 
-        this.handleQuestion(responseText, widgetName); 
+        this.handleQuestion(botResponse, widgetName); 
     }
 
-    handleComplaintsQuestion = (id) => {
+    handleComplaintsQuestion = (option) => {
         const responses = {
             1: 'Сообщая о недостатках в работе коммунальных и городских служб, проблемах благоустройства и качества жизни вы помогаете органам исполнительной власти контролировать и своевременно устранять недочеты по состоянию инфраструктуры, проезжей части, освещения, уборке территории и другим вопросам.',
             2: `Чтобы отправить сообщение, в разделе «Сообщения» на стартовой странице Портала нажмите кнопку «Сообщить о проблеме». Заполните необходимую информацию о вашей проблеме:
@@ -109,22 +127,25 @@ class ActionProvider {
             6: 'Получив ответ от исполнителя, вы можете оценить качество решения проблемы. Если оно вас не устраивает или проблема не устранена, заявка снова отправится на доработку исполнителю. Если вы довольны качеством решения, обязательно отметьте это в личном кабинете.',
         };
         
-        const responseText = responses[id];
-        const widgetName = 'complaintsConversationReturn';
+        const {id, text} = option;
 
-        this.handleQuestion(responseText, widgetName);
+        const botResponse = responses[id];        
+        const widgetName = 'complaintsConversationReturn';
+        const userResponse = text;
+
+        this.handleQuestion(botResponse, widgetName, userResponse);
     }  
 
     // HANDLE VOTINGS QUESTIONS
 
     handleVotingsQuestionList = () => {
-        const responseText = 'Вопросы по теме "Голосования"';
+        const botResponse = this.defaultBotResponses.selectQuestion;
         const widgetName = 'votingsQuestionList';
 
-        this.handleQuestion(responseText, widgetName);
+        this.handleQuestion(botResponse, widgetName);
     }
 
-    handleVotingsQuestion = (id) => {
+    handleVotingsQuestion = (option) => {
         const responses = {
             1: 'Голосования – это возможность поделиться своим мнением в вопросах благоустройства и развития городской среды. В разделе «Голосования» можно ознакомиться со всеми проведёнными голосованиями. Для удобства можно применить фильтр по статусу голосования или по городу его проведения.',
             2: `Возможность принять участие в голосовании предоставляется авторизованным пользователям Портала. 
@@ -133,22 +154,25 @@ class ActionProvider {
             3: 'Список проектов, за которые вы проголосовали, можно найти в пункте «Мои голосования» Личного кабинета.',
         };
 
-        const responseText = responses[id];
-        const widgetName = 'votingsConversationReturn';
+        const {id, text} = option;
 
-        this.handleQuestion(responseText, widgetName);
+        const botResponse = responses[id];
+        const widgetName = 'votingsConversationReturn';
+        const userResponse = text;
+
+        this.handleQuestion(botResponse, widgetName, userResponse);
     }
 
     // HANDLE INITIATIVES QUESTIONS
     
     handleInitiativesQuestionList = () => {
-        const responseText = 'Вопросы по теме "Инициативы"';
+        const botResponse = this.defaultBotResponses.selectQuestion;
         const widgetName = 'initiativesQuestionList';
 
-        this.handleQuestion(responseText, widgetName);
+        this.handleQuestion(botResponse, widgetName);
     }
 
-    handleInitiativesQuestion = (id) => {
+    handleInitiativesQuestion = (option) => {
         const responses = {
             1: 'В разделе «Инициативы» Портала создаются и публикуются обращения граждан с частными инициативами, затрагивающими интересы жителей муниципального образования в рамках инициативного бюджетирования.',
             2: `Для подачи инициативы необходимо перейти по кнопке «Добавить инициативу» в верхнем правом углу экрана раздела «Инициативы». Далее следует выбрать категорию и подкатегорию инициативы, нажать кнопку «Продолжить». Затем заполните информацию о вашем предложении.
@@ -159,75 +183,87 @@ class ActionProvider {
                 При желании можно оставить комментарий или перейти к другим инициативным проектам на Портале в списке «Другие инициативы».`,
         };
 
-        const responseText = responses[id];
-        const widgetName = 'initiativesConversationReturn';
+        const {id, text} = option;
 
-        this.handleQuestion(responseText, widgetName);
+        const botResponse = responses[id];
+        const widgetName = 'initiativesConversationReturn';
+        const userResponse = text;
+
+        this.handleQuestion(botResponse, widgetName, userResponse);
     }
 
     // HANDLE BEAUTIFICATION QUESTIONS
 
     handleBeautificationQuestionList = () => {
-        const responseText = 'Вопросы по теме "Благоуйстройство"';
+        const botResponse = this.defaultBotResponses.selectQuestion;
         const widgetName = 'beautificationQuestionList';
 
-        this.handleQuestion(responseText, widgetName);
+        this.handleQuestion(botResponse, widgetName);
     }
 
-    handleBeautificationQuestion = (id) => {
+    handleBeautificationQuestion = (option) => {
         const responses = {
             1: 'В этом разделе вы можете посмотреть проекты по благоустройству и, если вы зарегистрированы, одобрить понравившиеся. В карточке проекта по благоустройству вы можете ознакомится с основной информацией, скачать презентацию.',
             2: 'В карточке проекта зарегистрированный пользователь может его одобрить, нажав на кнопку «палец вверх», а также оставить свой комментарий.',
         };
 
-        const responseText = responses[id];
-        const widgetName = 'beautificationConversationReturn';
+        const {id, text} = option;
 
-        this.handleQuestion(responseText, widgetName);
+        const botResponse = responses[id];
+        const widgetName = 'beautificationConversationReturn';
+        const userResponse = text;
+
+        this.handleQuestion(botResponse, widgetName, userResponse);
     }
 
     // HANDLE WORKMAP QUESTIONS
 
     handleWorkMapQuestionList = () => {
-        const responseText = 'Вопросы по теме "Карта работ"';
+        const botResponse = this.defaultBotResponses.selectQuestion;        
         const widgetName = 'workMapQuestionList';
 
-        this.handleQuestion(responseText, widgetName);
+        this.handleQuestion(botResponse, widgetName);
     }
 
-    handleWorkMapQuestion = (id) => {
+    handleWorkMapQuestion = (option) => {
         const responses = {
             1: `В разделе «Карта работ» отображается информация о работах коммунальных, городских и дорожных служб. 
                 Слева на карте находится список с карточками работ, из которых можно узнать точный адрес проведения, сроки выполнения и описание работ. 
                 Над картой находится панель управления, в которой можно выбрать работы по статусу выполнения, типу и городу проведения.`,
         };
 
-        const responseText = responses[id];
+        const {id, text} = option;
+
+        const botResponse = responses[id];
+        const userResponse = text;
         const widgetName = 'workMapConversationReturn';
 
-        this.handleQuestion(responseText, widgetName);
+        this.handleQuestion(botResponse, widgetName, userResponse);
     }
 
     // HANDLE SUPPORT QUESTIONS
 
     handleSupportQuestionList = () => {
-        const responseText = 'Вопросы по теме "Техническая поддержка"';
+        const botResponse = this.defaultBotResponses.selectQuestion;
         const widgetName = 'supportQuestionList';
 
-        this.handleQuestion(responseText, widgetName);
+        this.handleQuestion(botResponse, widgetName);
     }
 
-    handleSupportQuestion = (id) => {
+    handleSupportQuestion = (option) => {
         const responses = {
             1: 'Если вы не нашли ответа на свой вопрос Вы можете связаться со специалистом технической поддержки по электронной почте info@nashsever51.ru.',
             2: `Вы можете оставить свой отзыв и предложения по работе Портала через форму обратной связи.
                 Чтобы открыть форму перейдите по ссылке «Сообщить о проблеме на сайте» в правом нижнем углу подвала Портала.`,
         };
 
-        const responseText = responses[id];
-        const widgetName = 'supportConversationReturn';
+        const {id, text} = option;
 
-        this.handleQuestion(responseText, widgetName);
+        const botResponse = responses[id];
+        const widgetName = 'supportConversationReturn';
+        const userResponse = text;
+
+        this.handleQuestion(botResponse, widgetName, userResponse);
     }
     
 };
