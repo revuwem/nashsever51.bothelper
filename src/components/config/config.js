@@ -5,6 +5,8 @@ import BotHeader from '../bot-header';
 import BotAvatar from '../bot-avatar';
 import UserOption from '../user-option';
 
+import botKnowledgeBase from '../bot-knowledge-base';
+
 import botAvatar from '../../assets/images/bot_icon/bot.svg';
 
 const botName = 'Борис';
@@ -462,7 +464,7 @@ const config = {
         },
     ],
     initialMessages: [
-        createChatBotMessage("Выберите интересующий раздел, чтобы я смог вам помочь😊", {widget: 'defaultOptions'})
+        createChatBotMessage(botKnowledgeBase.defaultResponse, {widget: 'defaultOptions'})
     ],
 };
 

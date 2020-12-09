@@ -1,13 +1,13 @@
 import React from 'react';
 
+import botKnowledgeBase from '../bot-knowledge-base';
+
 class ActionProvider {
     constructor(createChatBotMessage, setStateFunc, createClientMessage) {
         this.createChatBotMessage = createChatBotMessage;
         this.setState = setStateFunc;
-        this.createClientMessage = createClientMessage;
-        this.defaultBotResponses = {
-            selectQuestion: 'Какой вопрос вас интересует?',
-        }
+        this.createClientMessage = createClientMessage; 
+        this.defaultBotResponses = botKnowledgeBase;       
     }
 
     updateChatbotState = (botMessage, userMessage = null) => {
@@ -32,7 +32,7 @@ class ActionProvider {
 
     handleDefaultOptions = () => {
         const message = this.createChatBotMessage(
-            'Выберите интересующий раздел, чтобы я смог вам помочь😊',
+            this.defaultBotResponses.defaultResponse,
             {
                 widget: 'defaultOptions'
             }
