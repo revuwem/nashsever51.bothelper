@@ -179,13 +179,13 @@ html {
             transition: all 0.1s ease-out;
 
             &:hover {
-                background-color: darken($primary-color, 2%);
+                background-color: lighten($primary-color, 10%);
                 box-shadow: 0 -0.5rem 1rem rgba($dark-color, 0.15);
                 transform: translateX(-5px);
             }
 
             &:active {
-                background-color: darken($primary-color, 5%);
+                background-color: darken($primary-color, 2%);
                 box-shadow: 0 0.5rem 1rem rgba($dark-color, 0.35);
                 transform: translateX(-5px) translateY(1px);
             }
