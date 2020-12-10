@@ -43,21 +43,25 @@ html {
         right: 0;
 
         width: 5rem;
-        height: 5rem;        
+        height: 5rem; 
+        padding: 0.5rem;       
 
-        background-color: $light-color;       
-        
-        
-
+        background-color: $light-color;
         border: none;
         border-radius: 50%;
         outline: none;
 
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);  
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);  
         cursor: pointer;
+
+        transition: all 0.1s;
         
         img {
             max-width: 100%;
+        }
+
+        &:hover{
+            transform: scale(1.03) translateY(-2px);           
         }
     }
 
@@ -117,13 +121,17 @@ html {
         .react-chatbot-kit-user-chat-message {
             width: auto;
             max-width: 75%;
-            margin-left: 0;             
+            margin-left: 0;                
 
             color: $dark-color;
             background-color: #ececec;
             font-size: 1.4rem; 
             line-height: 150%;
         }   
+
+        .react-chatbot-kit-user-chat-message {
+            text-align: right;
+        }
         
         .react-chatbot-kit-user-avatar-container {
             width: 4rem;
