@@ -3,7 +3,7 @@ const optionsConfig = {
         questions: [
             {
                 id: 1,
-                text: 'Начало работы', 
+                text: 'Регистрация', 
                 handler: 'handleStartUsageQuestionList',                         
             },
             {
@@ -45,42 +45,37 @@ const optionsConfig = {
         ],
     },
     startUsage:{
-        questions: [
+        questions: [            
             {
                 id: 1,
-                text: 'С чего начать работу с порталом?',
-                handler: 'handleStartUsageQuestion',
-            },
-            {
-                id: 2,
                 text: 'Зачем нужна регистрация?',
                 handler: 'handleStartUsageQuestion',
             },
             {
-                id: 3,
+                id: 2,
                 text: 'Как зарегистрироваться на портале?',
                 handler: 'handleStartUsageQuestion',
             },
             {
-                id: 4,
-                text: 'Кнопка регистрации недоступна.',
+                id: 3,
+                text: 'Кнопка регистрации недоступна. Что делать?',
                 handler: 'handleStartUsageQuestion',
             },
             {
-                id: 5,
-                text: 'Выбрать другую тему',
+                id: 4,
+                text: 'Кажется, мой вопрос касается другой темы',
                 handler: 'handleDefaultOptions',
             },
         ],
         conversationReturn:[
             {
                 id: 1,
-                text: 'У меня остались вопросы по этому разделу',       //TODO: вынести кнопки ответов в конфиг, конфиг кнопок разделить на вложенные объекты вопросов и ответов
+                text: 'У меня остались вопросы о регистрации',
                 handler: 'handleStartUsageQuestionList',                        
             },
             {
                 id: 2,
-                text: 'Спасибо, я разобрался',
+                text: 'Понятно, спасибо',
                 handler: 'handleDefaultOptions',                        
             },
         ],
@@ -89,39 +84,39 @@ const optionsConfig = {
         questions: [
             {
                 id: 1,
-                text: 'Как войти в учётную запись?',
+                text: 'Как авторизоваться на Портале?',
                 handler: 'handleProfileQuestion',
             },
             {
                 id: 2,
                 text: 'Как зайти в Личный кабинет?',
                 handler: 'handleProfileQuestion',
-            },
+            },            
             {
                 id: 3,
-                text: 'Не пришло письмо для подтверждения email.',
-                handler: 'handleProfileQuestion',
-            },
-            {
-                id: 4,
                 text: 'Что делать если я забыл пароль от учётной записи?',
                 handler: 'handleProfileQuestion',
             },
             {
+                id: 4,
+                text: 'Что делать если не пришло письмо о восстановлении пароля?',
+                handler: 'handleProfileQuestion',
+            },
+            {
                 id: 5,
-                text: 'Вернуться к разделам',
+                text: 'Мой вопрос относится к другой теме',
                 handler: 'handleDefaultOptions',
             },
         ],
         conversationReturn: [
             {
                 id: 1,
-                text: 'У меня остались вопросы по этому разделу',
+                text: 'У меня остались вопросы о личном кабинете',
                 handler: 'handleProfileQuestionList',                        
             },
             {
                 id: 2,
-                text: 'Все разделы',
+                text: 'Спасибо за подсказку',
                 handler: 'handleDefaultOptions',                        
             },
         ],
@@ -140,7 +135,7 @@ const optionsConfig = {
             },
             {
                 id: 3,
-                text: 'Какие сроки рассмотрения обращения?',
+                text: 'Какой срок рассмотрения обращения?',
                 handler: 'handleComplaintsQuestion',
             },
             {
@@ -160,19 +155,19 @@ const optionsConfig = {
             }, 
             {
                 id: 7,
-                text: 'Вернуться к разделам',
+                text: 'Показать остальные темы',
                 handler: 'handleDefaultOptions',
             },                   
         ],
         converastionReturn: [
             {
                 id: 1,
-                text: 'У меня остались вопросы по этому разделу',
+                text: 'У меня есть ещё вопросы о сообщениях',
                 handler: 'handleComplaintsQuestionList',                        
             },
             {
                 id: 2,
-                text: 'Все разделы',
+                text: 'Понятно, спасибо',
                 handler: 'handleDefaultOptions',                        
             },
         ],
@@ -196,19 +191,19 @@ const optionsConfig = {
             },
             {
                 id: 4,
-                text: 'Вернуться к разделам',
+                text: 'Меня интересует другая тема',
                 handler: 'handleDefaultOptions',
             },  
         ],
         conversationReturn: [
             {
                 id: 1,
-                text: 'У меня остались вопросы по этому разделу',
+                text: 'Ещё вопрос о голосованиях',
                 handler: 'handleVotingsQuestionList',                        
             },
             {
                 id: 2,
-                text: 'Все разделы',
+                text: 'Спасибо за пояснение',
                 handler: 'handleDefaultOptions',                        
             },
         ],
@@ -237,19 +232,19 @@ const optionsConfig = {
             },
             {
                 id: 5,
-                text: 'Вернуться к разделам',
+                text: 'Вернуться к другим темам',
                 handler: 'handleDefaultOptions',
             },  
         ],
         conversationReturn: [
             {
                 id: 1,
-                text: 'У меня остались вопросы по этому разделу',
+                text: 'У меня остались вопросы по этой теме',
                 handler: 'handleInitiativesQuestionList',                        
             },
             {
                 id: 2,
-                text: 'Все разделы',
+                text: 'Понятно, спасибо',
                 handler: 'handleDefaultOptions',                        
             },
         ],
@@ -268,7 +263,7 @@ const optionsConfig = {
             },                    
             {
                 id: 3,
-                text: 'Вернуться к разделам',
+                text: 'Вернуться к другим темам',
                 handler: 'handleDefaultOptions',
             },  
         ],
@@ -280,7 +275,7 @@ const optionsConfig = {
             },
             {
                 id: 2,
-                text: 'Все разделы',
+                text: 'Спасибо',
                 handler: 'handleDefaultOptions',                        
             },
         ],
@@ -294,14 +289,14 @@ const optionsConfig = {
             },                                     
             {
                 id: 2,
-                text: 'Вернуться к разделам',
+                text: 'Меня интересует другая тема',
                 handler: 'handleDefaultOptions',
             },  
         ],
         conversationReturn: [                    
             {
                 id: 1,
-                text: 'Все разделы',
+                text: 'Спасибо за подсказку',
                 handler: 'handleDefaultOptions',                        
             },
         ],
@@ -310,7 +305,7 @@ const optionsConfig = {
         questions: [
             {
                 id: 1,
-                text: 'Как связаться со специалистом ТП?',
+                text: 'Как связаться со специалистом технической поддержки?',
                 handler: 'handleSupportQuestion',
             },   
             {
@@ -320,7 +315,7 @@ const optionsConfig = {
             },                                  
             {
                 id: 3,
-                text: 'Вернуться к разделам',
+                text: 'Вернуться к другим темам',
                 handler: 'handleDefaultOptions',
             },  
         ],
@@ -332,7 +327,7 @@ const optionsConfig = {
             },                   
             {
                 id: 2,
-                text: 'Все разделы',
+                text: 'Спасибо',
                 handler: 'handleDefaultOptions',                        
             },
         ],   

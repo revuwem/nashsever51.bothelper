@@ -16,21 +16,55 @@ class ActionProvider {
         // actually manipulates the top level state of the Chatbot, so it's     
         // important that we make sure that we preserve the previous state.        
 
-        if(userMessage) {
-            this.setState(prevState => ({
-                ...prevState,
-                messages: [...prevState.messages, userMessage, botMessage]
-            }));
+        if (Array.isArray(botMessage)) {
+            if(userMessage) {
+                this.setState(prevState => ({
+                    ...prevState,
+                    messages: [...prevState.messages, userMessage, ...botMessage]
+                }));
+            } else {
+                this.setState(prevState => ({
+                    ...prevState,
+                    messages: [...prevState.messages, ...botMessage]
+                }));
+            }    
         } else {
-            this.setState(prevState => ({
-                ...prevState,
-                messages: [...prevState.messages, botMessage]
-            }));
-        }        
+            if(userMessage) {
+                this.setState(prevState => ({
+                    ...prevState,
+                    messages: [...prevState.messages, userMessage, botMessage]
+                }));
+            } else {
+                this.setState(prevState => ({
+                    ...prevState,
+                    messages: [...prevState.messages, botMessage]
+                }));
+            }  
+        }
+            
     } 
 
     handleResponse = (botResponse, widgetName, userResponse = null) => {
-        const botMessage = this.createChatBotMessage(botResponse, {widget: widgetName});
+        let botMessage = '';
+        let delay = -2500;   
+
+        if (Array.isArray(botResponse)) {                 
+            botMessage = botResponse.map((response, responseId, responses) => {
+                    
+                    delay += 3500;
+                    console.log(delay);
+                
+                    if (responseId === responses.length-1) {
+                        return this.createChatBotMessage(response, {widget: widgetName, withAvatar: true, delay});
+                    } 
+
+                   return this.createChatBotMessage(response, {withAvatar: true, delay});                
+                }
+            );
+        } else {   
+            delay += 2500;
+            botMessage = this.createChatBotMessage(botResponse, {widget: widgetName, delay});
+        }
         const userMessage = userResponse ? this.createClientMessage(userResponse) : null;
 
         this.updateChatbotState(botMessage, userMessage);
