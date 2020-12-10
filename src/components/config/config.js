@@ -29,7 +29,7 @@ const config = {
             widgetName: 'defaultOptions',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: optionsConfig.default
+                options: optionsConfig.default.questions,
             }
         },         
         // startUsageQuestionList  
@@ -37,7 +37,7 @@ const config = {
             widgetName: 'startUsageQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: optionsConfig.startUsage,
+                options: optionsConfig.startUsage.questions,
             }
         },
         // startUsageConversationReturn
@@ -45,18 +45,7 @@ const config = {
             widgetName: 'startUsageConversationReturn',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: [
-                    {
-                        id: 1,
-                        text: 'У меня остались вопросы по этому разделу',       //TODO: вынести кнопки ответов в конфиг, конфиг кнопок разделить на вложенные объекты вопросов и ответов
-                        handler: 'handleStartUsageQuestionList',                        
-                    },
-                    {
-                        id: 2,
-                        text: 'Спасибо, я разобрался',
-                        handler: 'handleDefaultOptions',                        
-                    },
-                ],
+                options: optionsConfig.startUsage.conversationReturn,
             },
         },   
         // profileQuestionList
@@ -64,7 +53,7 @@ const config = {
             widgetName: 'profileQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: optionsConfig.profile,
+                options: optionsConfig.profile.questions,
             }
         },         
         // profileConversationReturn
@@ -72,18 +61,7 @@ const config = {
             widgetName: 'profileConversationReturn',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: [
-                    {
-                        id: 1,
-                        text: 'У меня остались вопросы по этому разделу',
-                        handler: 'handleProfileQuestionList',                        
-                    },
-                    {
-                        id: 2,
-                        text: 'Все разделы',
-                        handler: 'handleDefaultOptions',                        
-                    },
-                ],
+                options: optionsConfig.profile.conversationReturn,
             }
         },
         // complaintsQuestionList
@@ -91,7 +69,7 @@ const config = {
             widgetName: 'complaintsQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: optionsConfig.complaints
+                options: optionsConfig.complaints.questions,
             }
         },
         // complaintsConversationReturn
@@ -99,18 +77,7 @@ const config = {
             widgetName: 'complaintsConversationReturn',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: [
-                    {
-                        id: 1,
-                        text: 'У меня остались вопросы по этому разделу',
-                        handler: 'handleComplaintsQuestionList',                        
-                    },
-                    {
-                        id: 2,
-                        text: 'Все разделы',
-                        handler: 'handleDefaultOptions',                        
-                    },
-                ],
+                options: optionsConfig.complaints.converastionReturn,
             },
         },
         // votingsQuestionList
@@ -118,7 +85,7 @@ const config = {
             widgetName: 'votingsQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: optionsConfig.votings
+                options: optionsConfig.votings.questions,
             },
         },
         // votingsConversationReturn
@@ -126,18 +93,7 @@ const config = {
             widgetName: 'votingsConversationReturn',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: [
-                    {
-                        id: 1,
-                        text: 'У меня остались вопросы по этому разделу',
-                        handler: 'handleVotingsQuestionList',                        
-                    },
-                    {
-                        id: 2,
-                        text: 'Все разделы',
-                        handler: 'handleDefaultOptions',                        
-                    },
-                ],
+                options: optionsConfig.votings.conversationReturn,
             },
         },
         // initiativesQuestionList
@@ -145,7 +101,7 @@ const config = {
             widgetName: 'initiativesQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: optionsConfig.initiatives
+                options: optionsConfig.initiatives.questions,
             },
         },
         // initiativesConversationReturn
@@ -153,18 +109,7 @@ const config = {
             widgetName: 'initiativesConversationReturn',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: [
-                    {
-                        id: 1,
-                        text: 'У меня остались вопросы по этому разделу',
-                        handler: 'handleInitiativesQuestionList',                        
-                    },
-                    {
-                        id: 2,
-                        text: 'Все разделы',
-                        handler: 'handleDefaultOptions',                        
-                    },
-                ],
+                options: optionsConfig.initiatives.conversationReturn,
             },
         },
         // beautificationQuestionList
@@ -172,7 +117,7 @@ const config = {
             widgetName: 'beautificationQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: optionsConfig.beautification
+                options: optionsConfig.beautification.questions,
             },
         },
         // beautificationConversationReturn
@@ -180,18 +125,7 @@ const config = {
             widgetName: 'beautificationConversationReturn',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: [
-                    {
-                        id: 1,
-                        text: 'У меня остались вопросы по этому разделу',
-                        handler: 'handleBeautificationQuestionList',                        
-                    },
-                    {
-                        id: 2,
-                        text: 'Все разделы',
-                        handler: 'handleDefaultOptions',                        
-                    },
-                ],
+                options: optionsConfig.beautification.conversationReturn,
             },
         },
         // workMapQuestionList
@@ -199,7 +133,7 @@ const config = {
             widgetName: 'workMapQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: optionsConfig.workmap
+                options: optionsConfig.workmap.questions,
             },
         },
         // workMapConversationReturn
@@ -207,13 +141,7 @@ const config = {
             widgetName: 'workMapConversationReturn',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: [                    
-                    {
-                        id: 1,
-                        text: 'Все разделы',
-                        handler: 'handleDefaultOptions',                        
-                    },
-                ],
+                options: optionsConfig.workmap.conversationReturn,
             },
         },
         // supportQuestionList
@@ -221,7 +149,7 @@ const config = {
             widgetName: 'supportQuestionList',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: optionsConfig.support
+                options: optionsConfig.support.questions,
             },
         },
         // supportConversationReturn
@@ -229,18 +157,7 @@ const config = {
             widgetName: 'supportConversationReturn',
             widgetFunc: (props) => <UserOption {...props} />,
             props: {
-                options: [ 
-                    {
-                        id: 1,
-                        text: 'У меня остались вопросы по этому разделу',
-                        handler: 'handleSupportQuestionList',                        
-                    },                   
-                    {
-                        id: 2,
-                        text: 'Все разделы',
-                        handler: 'handleDefaultOptions',                        
-                    },
-                ],
+                options: optionsConfig.support.conversationReturn,
             },
         },
     ],
