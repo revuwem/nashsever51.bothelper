@@ -14,8 +14,7 @@ class ActionProvider {
         // NOTE: This function is set in the constructor, and is passed in      
         // from the top level Chatbot component. The setState function here     
         // actually manipulates the top level state of the Chatbot, so it's     
-        // important that we make sure that we preserve the previous state.
-        console.log(userMessage, typeof userMessage);
+        // important that we make sure that we preserve the previous state.        
 
         if(userMessage) {
             this.setState(prevState => ({
@@ -28,35 +27,32 @@ class ActionProvider {
                 messages: [...prevState.messages, botMessage]
             }));
         }        
-    }      
+    } 
 
-    handleDefaultOptions = () => {
-        const message = this.createChatBotMessage(
-            this.botKnowledge.defaultResponse,
-            {
-                widget: 'defaultOptions'
-            }
-        );
-
-        this.updateChatbotState(message);
-    }
-
-    handleQuestion = (botResponse, widgetName, userResponse = null) => {
+    handleResponse = (botResponse, widgetName, userResponse = null) => {
         const botMessage = this.createChatBotMessage(botResponse, {widget: widgetName});
         const userMessage = userResponse ? this.createClientMessage(userResponse) : null;
 
         this.updateChatbotState(botMessage, userMessage);
     }
 
+    handleDefaultOptions = (option) => {
+        const botResponse = this.botKnowledge.defaultResponse;
+        const widgetName = 'defaultOptions';
+        const userResponse = option.text;
+
+        this.handleResponse(botResponse, widgetName, userResponse);
+    }
 
 
     // START USAGE SECTION
 
-    handleStartUsageQuestionList = () => { 
+    handleStartUsageQuestionList = (option) => { 
         const botResponse = this.botKnowledge.selectQuestion;        
         const widgetName = 'startUsageQuestionList';
+        const userResponse = option.text;        
 
-        this.handleQuestion(botResponse, widgetName);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     handleStartUsageQuestion = (option) => {
@@ -67,16 +63,17 @@ class ActionProvider {
         const userResponse = text;
         const widgetName = 'startUsageConversationReturn';
 
-        this.handleQuestion(botResponse, widgetName, userResponse);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
     
     // HANDLE PROFILE QUESTIONS
 
-    handleProfileQuestionList = () => {
+    handleProfileQuestionList = (option) => {
         const botResponse = this.botKnowledge.selectQuestion;        
         const widgetName = 'profileQuestionList';
+        const userResponse = option.text;        
 
-        this.handleQuestion(botResponse, widgetName);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     handleProfileQuestion = (option) => {        
@@ -87,16 +84,17 @@ class ActionProvider {
         const userResponse = text;
         const widgetName = 'profileConversationReturn';
 
-        this.handleQuestion(botResponse, widgetName, userResponse);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }    
 
     // HANDLE COMPLAINTS QUESTIONS
 
-    handleComplaintsQuestionList = () => {
+    handleComplaintsQuestionList = (option) => {
         const botResponse = this.botKnowledge.selectQuestion;
         const widgetName = 'complaintsQuestionList';
+        const userResponse = option.text;        
 
-        this.handleQuestion(botResponse, widgetName); 
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     handleComplaintsQuestion = (option) => {
@@ -107,16 +105,17 @@ class ActionProvider {
         const widgetName = 'complaintsConversationReturn';
         const userResponse = text;
 
-        this.handleQuestion(botResponse, widgetName, userResponse);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }  
 
     // HANDLE VOTINGS QUESTIONS
 
-    handleVotingsQuestionList = () => {
+    handleVotingsQuestionList = (option) => {
         const botResponse = this.botKnowledge.selectQuestion;
         const widgetName = 'votingsQuestionList';
+        const userResponse = option.text;        
 
-        this.handleQuestion(botResponse, widgetName);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     handleVotingsQuestion = (option) => {
@@ -127,16 +126,17 @@ class ActionProvider {
         const widgetName = 'votingsConversationReturn';
         const userResponse = text;
 
-        this.handleQuestion(botResponse, widgetName, userResponse);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     // HANDLE INITIATIVES QUESTIONS
     
-    handleInitiativesQuestionList = () => {
+    handleInitiativesQuestionList = (option) => {
         const botResponse = this.botKnowledge.selectQuestion;
         const widgetName = 'initiativesQuestionList';
+        const userResponse = option.text;        
 
-        this.handleQuestion(botResponse, widgetName);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     handleInitiativesQuestion = (option) => {
@@ -147,16 +147,17 @@ class ActionProvider {
         const widgetName = 'initiativesConversationReturn';
         const userResponse = text;
 
-        this.handleQuestion(botResponse, widgetName, userResponse);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     // HANDLE BEAUTIFICATION QUESTIONS
 
-    handleBeautificationQuestionList = () => {
+    handleBeautificationQuestionList = (option) => {
         const botResponse = this.botKnowledge.selectQuestion;
         const widgetName = 'beautificationQuestionList';
+        const userResponse = option.text;        
 
-        this.handleQuestion(botResponse, widgetName);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     handleBeautificationQuestion = (option) => {
@@ -167,16 +168,17 @@ class ActionProvider {
         const widgetName = 'beautificationConversationReturn';
         const userResponse = text;
 
-        this.handleQuestion(botResponse, widgetName, userResponse);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     // HANDLE WORKMAP QUESTIONS
 
-    handleWorkMapQuestionList = () => {
+    handleWorkMapQuestionList = (option) => {
         const botResponse = this.botKnowledge.selectQuestion;        
         const widgetName = 'workMapQuestionList';
+        const userResponse = option.text;        
 
-        this.handleQuestion(botResponse, widgetName);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     handleWorkMapQuestion = (option) => {
@@ -187,16 +189,17 @@ class ActionProvider {
         const userResponse = text;
         const widgetName = 'workMapConversationReturn';
 
-        this.handleQuestion(botResponse, widgetName, userResponse);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     // HANDLE SUPPORT QUESTIONS
 
-    handleSupportQuestionList = () => {
+    handleSupportQuestionList = (option) => {
         const botResponse = this.botKnowledge.selectQuestion;
         const widgetName = 'supportQuestionList';
+        const userResponse = option.text;        
 
-        this.handleQuestion(botResponse, widgetName);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
 
     handleSupportQuestion = (option) => {
@@ -207,7 +210,7 @@ class ActionProvider {
         const widgetName = 'supportConversationReturn';
         const userResponse = text;
 
-        this.handleQuestion(botResponse, widgetName, userResponse);
+        this.handleResponse(botResponse, widgetName, userResponse);
     }
     
 };
