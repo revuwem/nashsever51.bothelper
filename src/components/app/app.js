@@ -39,7 +39,11 @@ function App() {
       </div>
 
       <button className="nashsever-helper-toggler" onClick={()=>toggleBot(prev => !prev)}>
-        <img src={botAvatar}/>
+        { 
+          displayBot ? 
+            <i class="fas fa-times fa-3x"></i> :
+            <img src={botAvatar}/> 
+        }
       </button>
     </Fragment>
   );
