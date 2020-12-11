@@ -44,7 +44,9 @@ html {
 
         width: 5rem;
         height: 5rem; 
-        padding: 0.5rem;       
+        padding: 0.5rem;    
+        
+        font-size: 0.9rem;
 
         background-color: $light-color;
         border: none;
@@ -57,7 +59,16 @@ html {
         transition: all 0.1s;
         
         img {
-            max-width: 100%;
+            max-width: 85%;
+        }
+
+        i {
+            color: $primary-color;
+        }
+
+        & > * {
+            transform: scale(1.01);
+            animation: appearance 0.1s ease-in;
         }
 
         &:hover{
@@ -253,5 +264,19 @@ html {
     100%{
         opacity: 1;
         transform: translateY(-2rem);
+    }
+}
+
+@keyframes appearance {
+    0% {        
+        transform: scale(0.9);
+    }
+
+    100% {        
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.01);
     }
 }
